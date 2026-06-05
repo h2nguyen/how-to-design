@@ -60,7 +60,7 @@ a{color:var(--accent-ink)}
 .legal-x{position:absolute;top:10px;right:12px;background:none;border:0;font-size:20px;line-height:1;color:var(--faint);cursor:pointer;padding:2px 4px}
 .legal-x:hover{color:var(--text)}
 .portal{max-width:920px;margin:0 auto;padding:44px 24px 90px}
-.portal-top{display:flex;justify-content:flex-end;margin-bottom:20px}
+.portal-top{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:20px}
 .portal-top .lang-switch{display:flex;gap:6px;width:auto;margin:0}
 .portal h1{font-size:30px;font-weight:700;line-height:1.2;margin:0 0 12px}
 .tracks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:12px}
@@ -116,6 +116,16 @@ a{color:var(--accent-ink)}
 .tts-btn:hover{border-color:var(--accent);color:var(--accent-ink)}
 .tts-stop{padding:5px 9px}
 .tts-active{background:var(--accent-weak)!important;border-radius:6px;box-shadow:0 0 0 4px var(--accent-weak)}
+.theme-dd{position:relative}
+.theme-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);background:var(--surface);border-radius:8px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer;color:var(--text)}
+.theme-btn:hover{border-color:var(--accent)}
+.theme-btn .caret{color:var(--muted);font-size:11px}
+.theme-icon{font-size:14px;line-height:1}
+.theme-menu{position:absolute;right:0;top:calc(100% + 6px);min-width:140px;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.14);padding:5px;display:none;z-index:50}
+.theme-dd.open .theme-menu{display:block}
+.theme-opt{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:0;background:transparent;font:inherit;font-size:13.5px;padding:8px 10px;border-radius:7px;cursor:pointer;color:var(--text)}
+.theme-opt:hover{background:var(--surface-2)}
+.theme-opt.is-on{color:var(--accent-ink);font-weight:600;background:var(--accent-weak)}
 .reset-all{margin-top:12px;border:1px solid var(--border);background:var(--surface);border-radius:8px;padding:7px 10px;font:inherit;font-size:12px;color:var(--muted);cursor:pointer;width:100%}
 .reset-all:hover{border-color:var(--danger-ink);color:var(--danger-ink)}
 .cz-tools{display:flex;align-items:center;gap:10px}
@@ -430,7 +440,7 @@ a{color:var(--accent-ink)}
 .ref-list li i{font-style:italic}
 .ref-link{margin-left:6px;white-space:nowrap;color:var(--accent-ink);text-decoration:none;font-weight:600}
 .ref-link:hover{text-decoration:underline}
-.cz-opt{border:1px solid var(--border);background:var(--surface);border-radius:99px;font:inherit;font-size:12.5px;padding:6px 12px;cursor:pointer;color:var(--text)}
+.cz-opt{display:flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--surface);border-radius:99px;font:inherit;font-size:12.5px;padding:6px 12px;cursor:pointer;color:var(--text);text-align:left}
 .cz-opt:hover:not(:disabled){border-color:var(--accent);color:var(--accent-ink)}
 .cz-opt:disabled{cursor:default}
 .cz-opt.correct{background:var(--accent-weak);border-color:var(--accent);color:var(--accent-ink);font-weight:700}
@@ -439,11 +449,63 @@ a{color:var(--accent-ink)}
 .cz-feedback.show{display:block}
 .cz-feedback.ok{background:var(--accent-weak);color:var(--accent-ink)}
 .cz-feedback.no{background:var(--warn-weak);color:var(--warn-ink)}
+/* ---- Letter badge + text wrapper (all quiz contexts) ---- */
+.cz-letter{flex:0 0 24px;height:24px;border-radius:50%;border:1.5px solid var(--border-strong);background:var(--surface-2);color:var(--muted);font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .17s,border-color .17s;user-select:none;line-height:1}
+.cz-opt-text{flex:1;text-align:left}
+/* ---- Gamified quiz: exam-stage dark treatment (cz-game class = vertical/quiz mode) ---- */
+/* Teal-family palette — drawn from --accent:#1d9e75 / --accent-ink:#0f6e56 */
+.cz-game{background:transparent;border:none;padding:0}
+.cz-game .cz-head{background:linear-gradient(90deg,#06231c 0%,#0c4234 100%);border-radius:12px;padding:11px 16px;border:1px solid rgba(61,212,160,.12);margin-bottom:16px}
+.cz-game .w-eyebrow{color:#9fe9cf}
+.cz-game .w-eyebrow::before{background:#f5b042}
+.cz-game .cz-score{font-size:14px;font-weight:800;color:#f5b042;letter-spacing:.4px}
+.cz-game .reset-btn{border-color:rgba(245,176,66,.35);background:rgba(245,176,66,.08);color:#f5b042;font-size:11px;padding:5px 11px;border-radius:8px}
+.cz-game .reset-btn:hover{border-color:#f5b042;background:rgba(245,176,66,.2);color:#f5b042}
+.cz-game .cz-item{background:linear-gradient(160deg,#06231c 0%,#0c4234 100%);border:1px solid rgba(61,212,160,.14);border-radius:16px;padding:24px 20px 20px;margin-bottom:20px;box-shadow:0 8px 32px rgba(2,12,8,.55)}
+.cz-game .cz-q{color:#eafaf4;font-size:15.5px;font-weight:600;text-align:center;margin-bottom:20px;line-height:1.55;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.cz-game .cz-q code{background:rgba(61,212,160,.12);border:1px solid rgba(61,212,160,.25);border-radius:5px;padding:2px 6px;color:#9fe9cf;font-family:var(--mono);font-size:.88em}
+.cz-game .cz-opts.cz-vert{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex-direction:unset;align-items:stretch}
+.cz-game .cz-opt{background:linear-gradient(135deg,rgba(13,66,52,.92) 0%,rgba(16,90,70,.85) 100%);border:1.5px solid rgba(61,212,160,.28);border-radius:11px;padding:12px 16px;color:#eafaf4;font-size:13.5px;font-weight:500;min-height:52px;gap:12px;transition:border-color .17s,background .17s,transform .12s,box-shadow .17s;width:100%}
+.cz-game .cz-opt:hover:not(:disabled){border-color:rgba(61,212,160,.6);background:linear-gradient(135deg,rgba(16,90,70,.95) 0%,rgba(20,120,92,.9) 100%);color:#fff;box-shadow:0 0 0 1px rgba(245,176,66,.4),0 4px 18px rgba(61,212,160,.25);transform:translateY(-1px)}
+.cz-game .cz-opt:disabled{cursor:default;transform:none}
+.cz-game .cz-opt.correct{background:linear-gradient(135deg,#0c4234,#1d9e75);border-color:#3dd4a0;color:#eafaf4;font-weight:700;box-shadow:0 0 0 3px rgba(61,212,160,.2),0 0 22px rgba(61,212,160,.3);animation:cz-pop .38s ease-out}
+.cz-game .cz-opt.correct .cz-letter{background:rgba(61,212,160,.25);border-color:#3dd4a0;color:#56e4b2}
+.cz-game .cz-opt.wrong{background:linear-gradient(135deg,#3a0f12,#7a1f24);border-color:rgba(245,80,80,.55);color:#fde4e4;opacity:.7}
+.cz-game .cz-opt.wrong .cz-letter{background:rgba(245,80,80,.12);border-color:rgba(245,80,80,.3);color:rgba(253,228,228,.4)}
+.cz-game .cz-feedback{margin-top:14px;font-size:13px;padding:11px 14px;border-radius:10px;line-height:1.55;font-weight:500}
+.cz-game .cz-feedback.ok{background:rgba(61,212,160,.12);color:#56e4b2;border:1px solid rgba(61,212,160,.28)}
+.cz-game .cz-feedback.no{background:rgba(245,80,80,.1);color:#ff9b9b;border:1px solid rgba(245,80,80,.22)}
+/* Letter badge in game context: warm amber — complementary to teal */
+.cz-game .cz-letter{border-color:rgba(245,176,66,.5);background:#f5b042;color:#3a2606;font-size:11.5px;width:26px;height:26px;flex:0 0 26px;font-weight:900}
+.cz-game .cz-opt:hover:not(:disabled) .cz-letter{background:#f5c042;border-color:#f5b042}
+@keyframes cz-pop{0%{transform:scale(1)}40%{transform:scale(1.03)}70%{transform:scale(.98)}100%{transform:scale(1)}}
 /* ---- Inline animated figure blocks ---- */
 .ex-fig{max-width:420px;margin:18px auto;text-align:center}
 .ex-fig svg{width:100%;height:auto;display:block}
 .ex-fig figcaption{font-size:12px;color:var(--muted);margin-top:6px}
 
+/* ---- Dark mode (explicit dark theme) ---- */
+:root[data-theme="dark"]{
+  --bg:#0f1117; --surface:#181d2a; --surface-2:#1e2436;
+  --border:#2c3650; --border-strong:#3d4e6e;
+  --text:#e2e8f6; --muted:#8a9ab8; --faint:#526080;
+  --accent:#3dd4a0; --accent-weak:#0c3325; --accent-ink:#56e4b2;
+  --warn-weak:#2a1c00; --warn-ink:#f0ab38;
+  --danger-weak:#2a0c0c; --danger-ink:#f07878;
+  color-scheme:dark;
+}
+/* ---- Dark mode (system / OS preference) ---- */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme]){
+    --bg:#0f1117; --surface:#181d2a; --surface-2:#1e2436;
+    --border:#2c3650; --border-strong:#3d4e6e;
+    --text:#e2e8f6; --muted:#8a9ab8; --faint:#526080;
+    --accent:#3dd4a0; --accent-weak:#0c3325; --accent-ink:#56e4b2;
+    --warn-weak:#2a1c00; --warn-ink:#f0ab38;
+    --danger-weak:#2a0c0c; --danger-ink:#f07878;
+    color-scheme:dark;
+  }
+}
 /* ---- Responsive ---- */
 @media (max-width:1180px){
   .app{grid-template-columns:var(--nav-w) minmax(0,1fr);grid-template-areas:"nav main"}
@@ -464,7 +526,7 @@ a{color:var(--accent-ink)}
 <body>
 <div class="portal" id="portal"></div>
 <script type="application/json" id="portal-i18n">{"de":{"name":"Deutsch","flag":"🇩🇪","title":"How-to Design","tagline":"Praxisnahe, interaktive, mehrsprachige Kurse, die dich ohne Vorkenntnisse durch UX/UI- und Enterprise-Design-Themen führen — und zum sicheren Anleiten von KI-Mitarbeitern.","tracksHeading":"Kurse","start":"Kurs öffnen","soon":"bald","version":"Version","legal":{"disclaimer":"⚠ Haftungsausschluss","disclaimerBody":"Dieser Kurs dient ausschließlich <strong>Bildungszwecken<\u002fstrong>. Er vermittelt UX/UI- und Designsystem-Konzepte; das durchgängige Beispiel („Mise“) und alle Personas sind fiktiv. Wir bemühen uns um Richtigkeit und zitieren echte Quellen, <strong>es wird jedoch keine Gewähr für Richtigkeit, Vollständigkeit oder Aktualität der Inhalte übernommen<\u002fstrong> — Standards und Werkzeuge ändern sich. Dieser Kurs ist unabhängig, steht in keiner Verbindung zu erwähnten Unternehmen, Normungsgremien oder Werkzeugen und wird von diesen nicht unterstützt oder offiziell betreut. Der Autor übernimmt keine Haftung für Entscheidungen, die auf Grundlage dieser Inhalte getroffen werden.","privacy":"Datenschutz","privacyHeading":"Datenschutzerklärung","privacyBody":"Diese Website erhebt, speichert oder verarbeitet keine personenbezogenen Daten. Es werden keine Cookies verwendet und keine Analyse- oder Tracking-Werkzeuge eingesetzt. Ihr Lernfortschritt und Ihre Notizen werden ausschließlich in Ihrem eigenen Browser (localStorage) gespeichert und verlassen Ihr Gerät nicht. Der Kurs läuft vollständig offline (clientseitig). Bei Bereitstellung über <strong>GitHub Pages<\u002fstrong> (GitHub, Inc.) kann GitHub IP-Adressen in seinen Server-Logs erfassen — siehe die ","privacyLink":"GitHub-Datenschutzerklärung"},"tracks":[{"id":"design-systems","title":"Design-Systeme & Corporate Design","blurb":"Von Marke und Corporate Design bis zu Design-Tokens, Komponenten, Barrierefreiheit und Governance. 7 Teile, 25 Kapitel.","available":true},{"id":"_soon","title":"Weitere Kurse in Arbeit","blurb":"UX-Research, Interaction & Motion, Design-Ops und mehr — jeweils als eigener Kurs im selben Format.","available":false}]},"en":{"name":"English","flag":"🇬🇧","title":"How-to Design","tagline":"Hands-on, interactive, multilingual courses that take you from zero through UX/UI and enterprise design topics — and to confidently directing AI collaborators.","tracksHeading":"Courses","start":"Open course","soon":"soon","version":"Version","legal":{"disclaimer":"⚠ Disclaimer","disclaimerBody":"This course is provided for <strong>educational purposes only<\u002fstrong>. It teaches UX/UI and design-systems concepts; the running example (“Mise”) and all personas are fictional. We strive for accuracy and cite real sources, but <strong>no guarantee is made regarding the accuracy, completeness, or currency of the material<\u002fstrong> — standards and tools evolve. This course is independent and is not affiliated with, endorsed by, or officially supported by any company, standards body, or tool mentioned. The author accepts no liability for decisions made based on this content.","privacy":"Privacy","privacyHeading":"Privacy Policy","privacyBody":"This website does not collect, store, or process any personal data. No cookies are used, and no analytics or tracking tools are employed. Your progress and notes are stored only in your own browser (localStorage) and never leave your device. The course runs entirely offline (client-side). If hosted on <strong>GitHub Pages<\u002fstrong> (GitHub, Inc.), GitHub may record IP addresses in its server logs — see the ","privacyLink":"GitHub Privacy Statement"},"tracks":[{"id":"design-systems","title":"Design systems & Corporate Design","blurb":"From brand and Corporate Design through design tokens, components, accessibility, and governance. 7 parts, 25 chapters.","available":true},{"id":"_soon","title":"More courses in progress","blurb":"UX research, interaction & motion, design ops, and more — each its own course in the same format.","available":false}]},"vi":{"name":"Tiếng Việt","flag":"🇻🇳","title":"How-to Design","tagline":"Những khóa học thực hành, tương tác, đa ngôn ngữ, chạy hoàn toàn ngoại tuyến — đưa bạn từ con số 0 đi qua UX/UI và thiết kế cho doanh nghiệp, rồi đến cách dẫn dắt các cộng sự AI một cách tự tin.","tracksHeading":"Khóa học","start":"Mở khóa học","soon":"sắp có","version":"Phiên bản","legal":{"disclaimer":"⚠ Tuyên bố miễn trừ","disclaimerBody":"Khóa học này chỉ nhằm <strong>mục đích giáo dục<\u002fstrong>. Nó giảng dạy các khái niệm UX/UI và design system; ví dụ xuyên suốt („Mise“) cùng tất cả nhân vật đều là hư cấu. Chúng tôi cố gắng đảm bảo độ chính xác và trích dẫn các nguồn thật, <strong>nhưng không bảo đảm về tính chính xác, đầy đủ hay cập nhật của nội dung<\u002fstrong> — các tiêu chuẩn và công cụ luôn thay đổi. Khóa học này độc lập, không liên kết với, không được chứng thực hay hỗ trợ chính thức bởi bất kỳ công ty, tổ chức tiêu chuẩn hay công cụ nào được nhắc đến. Tác giả không chịu trách nhiệm cho các quyết định dựa trên nội dung này.","privacy":"Quyền riêng tư","privacyHeading":"Chính sách quyền riêng tư","privacyBody":"Trang web này không thu thập, lưu trữ hay xử lý bất kỳ dữ liệu cá nhân nào. Không sử dụng cookie và không dùng công cụ phân tích hay theo dõi. Tiến độ và ghi chú của bạn chỉ được lưu trong trình duyệt của chính bạn (localStorage) và không bao giờ rời khỏi thiết bị. Khóa học chạy hoàn toàn ngoại tuyến (phía trình duyệt). Nếu được lưu trữ trên <strong>GitHub Pages<\u002fstrong> (GitHub, Inc.), GitHub có thể ghi lại địa chỉ IP trong nhật ký máy chủ — xem ","privacyLink":"Tuyên bố quyền riêng tư của GitHub"},"tracks":[{"id":"design-systems","title":"Design system & Corporate Design","blurb":"Từ thương hiệu và Corporate Design đến design token, thành phần, khả năng tiếp cận và quản trị. 7 phần, 25 chương.","available":true},{"id":"_soon","title":"Thêm khóa học đang được phát triển","blurb":"Nghiên cứu UX, tương tác & chuyển động, design ops và nhiều hơn nữa — mỗi thứ là một khóa riêng, cùng định dạng.","available":false}]}}</script>
-<script>window.APP_VERSION="1.1.0";</script>
+<script>window.APP_VERSION="1.2.0";</script>
 <script>
 
 (function(){
@@ -476,6 +538,10 @@ a{color:var(--accent-ink)}
   var lang = gp('lang') || lg('ds.lang') || (LANGS.indexOf('de')>=0?'de':LANGS[0]);
   if(LANGS.indexOf(lang)<0) lang=LANGS[0];
   ls('ds.lang',lang);
+  var theme = lg('ds.theme') || 'system';
+  function applyTheme(t){ if(t==='dark') document.documentElement.setAttribute('data-theme','dark'); else if(t==='light') document.documentElement.setAttribute('data-theme','light'); else document.documentElement.removeAttribute('data-theme'); }
+  applyTheme(theme);
+  if(window.matchMedia){ try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){ if(!lg('ds.theme')||lg('ds.theme')==='system') applyTheme('system'); }); }catch(e){} }
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function legalHTML(L){
     if(!L) return '';
@@ -510,9 +576,25 @@ a{color:var(--accent-ink)}
       pop.addEventListener('click',function(e){ e.stopPropagation(); });
     })(items[i]); }
   }
+  function buildPortalThemeDd(){
+    var dd=document.getElementById('portal-theme-dd'); if(!dd) return;
+    var tOpts=[{id:'light',icon:'☀'},{id:'system',icon:'⊙'},{id:'dark',icon:'☾'}];
+    var cur=tOpts.filter(function(o){return o.id===theme;})[0]||tOpts[1];
+    var html='<button class="theme-btn" id="portal-theme-btn" aria-haspopup="true" aria-expanded="false">'+
+      '<span class="theme-icon">'+cur.icon+'</span><span class="caret" aria-hidden="true">▾</span></button>'+
+      '<div class="theme-menu" role="menu">';
+    tOpts.forEach(function(o){ html+='<button class="theme-opt'+(o.id===theme?' is-on':'')+'" data-t="'+o.id+'"><span class="theme-icon">'+o.icon+'</span></button>'; });
+    html+='</div>';
+    dd.innerHTML=html;
+    dd.querySelector('#portal-theme-btn').addEventListener('click',function(e){ e.stopPropagation(); var open=dd.classList.toggle('open'); this.setAttribute('aria-expanded',open?'true':'false'); });
+    dd.querySelectorAll('.theme-opt').forEach(function(o){ o.addEventListener('click',function(e){ e.stopPropagation(); dd.classList.remove('open'); theme=o.getAttribute('data-t'); ls('ds.theme',theme); applyTheme(theme); buildPortalThemeDd(); }); });
+  }
+  document.addEventListener('click',function(){ var d=document.getElementById('portal-theme-dd'); if(d) d.classList.remove('open'); });
   function render(){
     var t=I[lang];
-    var h='<div class="portal-top"><div class="lang-switch">';
+    var h='<div class="portal-top">'+
+      '<div class="theme-dd" id="portal-theme-dd"></div>'+
+      '<div class="lang-switch">';
     LANGS.forEach(function(c){ h+='<button class="lang-btn'+(c===lang?' is-on':'')+'" data-l="'+c+'"><span style="margin-right:6px">'+esc(I[c].flag||'')+'</span>'+esc(I[c].name)+'</button>'; });
     h+='</div></div>';
     h+='<h1>'+esc(t.title)+'</h1><p class="home-lead">'+esc(t.tagline)+'</p>';
@@ -534,6 +616,7 @@ a{color:var(--accent-ink)}
       b.addEventListener('click',function(){ lang=b.getAttribute('data-l'); ls('ds.lang',lang); try{history.replaceState(null,'',location.pathname+'?lang='+lang);}catch(e){} render(); });
     });
     legalWire(document.getElementById('portal'));
+    buildPortalThemeDd();
   }
   render();
 })();
